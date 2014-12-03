@@ -177,6 +177,8 @@
     <Content Include="Views\Templates\book-details.html" />
     <Content Include="Views\Templates\checkout.html" />
     <Content Include="Views\Templates\error-404.html" />
+    <Content Include="Views\Templates\productexists.html" />
+    <Content Include="Views\Templates\productadded.html" />
     <Content Include="Views\Templates\login.html" />
     <Content Include="Views\Templates\register.html" />
     <Content Include="Views\Templates\search-no-results.html" />
