@@ -755,7 +755,6 @@ header {
 }
 
 .checkout-table {
-    
     width: 90%;
 }
 
@@ -768,11 +767,33 @@ header {
 
     .checkout-table .checkout-body {
         margin-top: 15px;
-        
     }
 
-        .checkout-table .checkout-row .row-price {
-            
-            font-weight: 700;
-            color: #b12704;
-        }
+    .checkout-table .checkout-row .row-image {
+        width: 15%;
+    }
+
+    .checkout-table .checkout-row .row-summary {
+        width: 60%;
+    }
+
+    .checkout-table .checkout-row .row-price {
+        width: 10%;
+        font-weight: 700;
+        color: #b12704;
+    }
+
+    .checkout-table .checkout-row .row-remove {
+        width: 15%;
+    }
+
+    .checkout-table .checkout-total {
+        text-align: right;
+    
+    }
+
+    .checkout-table .checkout-price {
+        font-weight: 700;
+        color: #b12704;
+    
+    }

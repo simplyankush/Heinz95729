@@ -12,8 +12,12 @@ routes.get('/#/checkout', function (context) {
       testcart: [
              { title: 'Sample Book', detailsLink: 'http://www.google.com', price: '4.99' },
              { title: 'Sample Book: The Sequel', detailsLink: 'http://www.yahoo.com', price: '5.99' },
-             { title: 'Sample Book: The Exciting End of the Trilogy', detailsLink: 'http://www.bing.com', price: '6.99' }
-      ]
+             { title: 'Sample Book: The Exciting End of the Trilogy', detailsLink: 'http://www.bing.com', price: '6.99' },
+             
+      ],
+
+      totalItem: '3',
+      totalPrice: '17.97'
   }
    });
 });

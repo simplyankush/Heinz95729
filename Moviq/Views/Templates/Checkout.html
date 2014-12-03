@@ -1,4 +1,4 @@
-﻿<script id="t-checkout" type="text/html">   
+﻿<script id="t-checkout" type="text/html">
     <div class="product-component">
         <h1>You've got a great bag of books there.</h1>
         <br />
@@ -10,21 +10,22 @@
                 </thead>
                 <tbody data-bind="foreach: { data: data.testcart, as: 'item' }" class="checkout-body">
                     <tr class="checkout-row">
-                        <td data-bind="src: item.thumbnailLink, attr: { alt: item.thumbnailAlt }, href: item.detailsLink">Image here</td>
-                        <td><strong data-bind="text: item.title, href: item.detailsLink"></strong></td>
+                        <td data-bind="src: item.thumbnailLink, attr: { alt: item.thumbnailAlt }, href: item.detailsLink" class="row-image">Image here</td>
+                        <td><strong data-bind="text: item.title, href: item.detailsLink" class="row-summary"></strong></td>
                         <td data-bind="currency: item.price" class="row-price"></td>
-                        <td data-bind="click: function() { alert('item is now removed-ish'); cart.removeCartItem(item); }">
-                            <a href="#" class="btn btn-xs btn-danger"><span class="glyphicon glyphicon-remove"></span> remove</a>
+                        <td data-bind="click: function() { cart.removeCartItem(item); }" class="row-remove">
+                            <a href="#" class="btn btn-xs btn-danger"><span class="glyphicon glyphicon-remove"></span>  remove</a>
                         </td>
                     </tr>
                 </tbody>
+                <tr style="height:20px"></tr>
+                <tr>
+                    <th colspan="3" class="checkout-total">Total ( <span data-bind="text: data.totalItem"></span> items ) :&nbsp;</th>
+                    <th data-bind="currency: data.totalPrice" class="checkout-price"></th>
+                </tr>
             </table>
         </div>
 
     </div>
-
-    better table formatting, make the X an obvious link to remove item
-    TOTAL COST OF ITEMS IN CART
-    BUY BUTTON
 
 </script>
