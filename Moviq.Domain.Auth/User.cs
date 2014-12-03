@@ -22,5 +22,7 @@
         public IEnumerable<string> Claims { get; set; }
         public string _type { get; set; }
         public ArrayList Cart { get; set; }
+    
+        
     }
 }
