@@ -164,6 +164,7 @@
     <Content Include="Css\_variables.less" />
     <Content Include="Css\_products.less" />
     <Content Include="Js\test\sinon.extensions.js" />
+    <Content Include="Css\_checkout.less" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
