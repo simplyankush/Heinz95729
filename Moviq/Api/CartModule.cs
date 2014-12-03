@@ -41,10 +41,12 @@ namespace Moviq.Api
                     {
                         user.Cart.Add(product);
                         userRepo.Set(user);
+                        return helper.ToJson(true);
                     }
                     }
-                
-                return       helper.ToJson(bookDomain.Repo.Get(args.uid));
+
+               return helper.ToJson(false);
+                    //helper.ToJson(bookDomain.Repo.Get(args.uid));
             };
 
             //this.Get["/api/books/search", true] = async (args, cancellationToken) => {
