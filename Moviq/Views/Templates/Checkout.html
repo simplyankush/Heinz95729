@@ -1,8 +1,6 @@
 ﻿<script id="t-checkout" type="text/html">
     <h1>You've got a great bag of books there.</h1>
 
-    LIST ALL ITEMS (see our mockup from design doc)
-
     <div class="product-component">
         <div class="row">   <!-- CHANGE THIS TO cart.products() for live version.  IS THIS THE PROPER NOMENCLATURE FOR CART.PRODUCTS()???-->
             <table>
@@ -11,19 +9,29 @@
                 </thead>
                 <tbody data-bind="foreach: { data: data.testcart, as: 'item' }">
                     <tr>
-                        <td data-bind="src: item.thumbnailLink, attr: { alt: item.thumbnailAlt }, href: item.detailsLink"></td>
-                        <td><strong data-bind="text: item.title, href: item.detailsLink"></strong></td>
+                        <td><a data-bind ="href: item.detailsLink"><img data-bind="src: item.thumbnailLink, attr: { alt: item.thumbnailAlt }" height="50"></img></adata-bind></td>
+                        <td><a data-bind="href: item.detailsLink"><strong data-bind="text: item.title"></strong></a></td>
                         <td data-bind="currency: item.price"></td>
-                        <td data-bind="click: function() { alert('item is now removed-ish'); cart.removeCartItem(item); }">X</td>
+                        <td align="center"><a data-bind="click: function() { alert('item is now removed-ish'); cart.removeCartItem(item); }"><strong>X</strong></a></td>
                     </tr>
                 </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="3" align="right"><b>Cart total: <b data-bind="currency: data.total"></b></b></td><td></td>
+                    </tr>
+                </tfoot>
             </table>    
         </div>
 
     </div>
 
-    better table formatting, make the X an obvious link to remove item
-    TOTAL COST OF ITEMS IN CART
-    BUY BUTTON
+    <button data-bind ="click: function() { alert('initiate purchase here'); cart.checkout(); }">make them mine: CHECKOUT</button>
+
+
+    commit
+    unit tests
+    commit
+    get total working
+    update trello
 
 </script>
