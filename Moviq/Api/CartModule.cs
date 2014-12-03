@@ -43,7 +43,7 @@ namespace Moviq.Api
                         userRepo.Set(user);
                         return helper.ToJson(true);
                     }
-                    }
+                }
 
                return helper.ToJson(false);
                     //helper.ToJson(bookDomain.Repo.Get(args.uid));
@@ -54,6 +54,24 @@ namespace Moviq.Api
             //    var result = await bookDomain.Repo.Find(searchTerm);
             //    return helper.ToJson(result);
             //};
+
+            this.Get["/api/cart/delete/{uid}"] = args =>
+            {
+                var currentUser = this.Context.CurrentUser;
+
+                if (currentUser != null)
+                {
+                    string username = currentUser.UserName;
+
+                    var user = userRepo.GetByUsername(username);
+                    string product = args.uid;
+                    user.Cart.Remove(product);
+                    userRepo.Set(user);
+                    return helper.ToJson(true);
+                }
+                return helper.ToJson(false);
+                
+            };
         }
     }
 }
