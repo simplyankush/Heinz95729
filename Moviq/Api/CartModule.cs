@@ -24,7 +24,8 @@ namespace Moviq.Api
             //    return helper.ToJson(bookDomain.Repo.List(take, skip));
             //};
 
-            this.Get["/api/cart"] = args => {
+            this.Get["/api/cart/add/{uid}"] = args =>
+            {
                var currentUser = this.Context.CurrentUser;
 
 
@@ -34,12 +35,12 @@ namespace Moviq.Api
                     string username = currentUser.UserName;
 
                     var user = userRepo.GetByUsername(username);
-                   
-                
-
+                    string product = args.uid;
+                    user.Cart.Add(product);
+                    userRepo.Set(user);
                 }
                 
-                return helper.ToJson(bookDomain.Repo.Get(args.uid));
+                return       helper.ToJson(bookDomain.Repo.Get(args.uid));
             };
 
             //this.Get["/api/books/search", true] = async (args, cancellationToken) => {
