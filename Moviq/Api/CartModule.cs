@@ -24,18 +24,15 @@ namespace Moviq.Api
             //    return helper.ToJson(bookDomain.Repo.List(take, skip));
             //};
 
-            this.Get["/api/cart/add/{uid}"] = args =>
-            {
-               var currentUser = this.Context.CurrentUser;
-
-
-
+            this.Get["/api/cart/add", true] = async (args, cancellationToken) => {
+                string productname = this.Request.Query.q; // +" AND _type: book";
+                var currentUser = this.Context.CurrentUser;
                if (currentUser != null)
                 {
                     string username = currentUser.UserName;
 
                     var user = userRepo.GetByUsername(username);
-                    string productname = args.uid;
+                     
                     IProduct product = bookDomain.Repo.Get(productname);
                     if (!user.Cart.Contains(product))
                     {
