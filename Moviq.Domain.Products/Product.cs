@@ -24,25 +24,26 @@ namespace Moviq.Domain.Products
         public string _type { get; set; }
 
 
-        public virtual bool Equals(Product obj)
-        {
-            if (!Uid.Equals(obj.Uid))
-                return false;
-            if (!Title.Equals(obj.Title) )
-                return false;
-            if (!Description.Equals(obj.Description))
-                return false;
-            if (!ThumbnailLink.Equals(obj.ThumbnailLink))
-                return false;
-            if (!_type.Equals(obj._type))
-                return false;
-            if (!(Price == obj.Price))
-                return false;
+        //public override bool Equals(object obj2)
+        //{
+        //    Product obj = obj2 as Product;
+        //    if (!Uid.Equals(obj.Uid))
+        //        return false;
+        //    if (!Title.Equals(obj.Title) )
+        //        return false;
+        //    if (!Description.Equals(obj.Description))
+        //        return false;
+        //    if (!ThumbnailLink.Equals(obj.ThumbnailLink))
+        //        return false;
+        //    if (!_type.Equals(obj._type))
+        //        return false;
+        //    if (!(Price == obj.Price))
+        //        return false;
 
-            return true;
+        //    return true;
 
         
-        }
+        //}
 
     }
 }
