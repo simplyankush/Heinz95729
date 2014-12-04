@@ -33,6 +33,21 @@ define('models/cart', { init: function (ko, CartItem) {
             $this.cart.push(cartItem);
         };
 
+        $this.totalPrice = function (cart) {
+       //     if (!cartItem) {
+         //       return 0;
+           // }
+
+            var total = 0;
+
+            for (var item in cart) {
+                if (item instanceof CartItem)
+                    total += item.price;
+            }
+
+            return total;
+        };
+
         $this.addCart = function (cart) {
             if (!cart) {
                 throw new Error('Argument Exception: the argument, books, must be defined to add books');
