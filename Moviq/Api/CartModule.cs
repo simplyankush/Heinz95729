@@ -34,10 +34,13 @@ namespace Moviq.Api
                     var user = userRepo.GetByUsername(username);
                      
                     IProduct product = bookDomain.Repo.Get(productname);
+                    
+
                     if (!user.Cart.Contains(product))
                     {
                         user.Cart.Add(product);
                         userRepo.Set(user);
+                        
                         return helper.ToJson(true);
                     }
                 }

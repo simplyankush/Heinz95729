@@ -9,7 +9,7 @@
                 url: '/api/cart/add/?q=' + context.params.q,
                 method: 'GET'
             }).done(function (data) {
-                var result = JSON.parse(data);
+                var result = new Boolean (JSON.parse(data));
                 if (result == true) {
                     viewEngine.setView({
                         template: 't-productadded',
