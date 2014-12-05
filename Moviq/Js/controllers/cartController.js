@@ -15,7 +15,7 @@
                     //    data: {}
                     //});
                     window.location.href = "/#/checkout";
-                    window.location.reload();
+                    //window.location.reload();
                 }
                 else {
                     alert("failed to delete product from cart");
