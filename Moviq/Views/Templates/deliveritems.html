@@ -1,5 +1,26 @@
 ﻿<script id="t-deliveritems" type="text/html">
     <div class="stripe-checkout">
-        TEST
+        <div class="h2">Woohoo!  Purchase successful!</div>
+        <div class="h3">Now download your stuff - Click the item title to download. Please.</div>
+        <div class="h3">PS: This also serves as your receipt.</div>
+        <br />
+
+        <table class="checkout-table">
+            <thead style="font-size:16px">
+                <tr><th>Items Purchased</th><th></th><th>Price</th></tr>
+            </thead>
+            <tbody data-bind="foreach: { data: data.boughtItems, as: 'item' }" class="grid-body">
+                <tr class="checkout-row">
+                    <td><a target="_blank" data-bind="attr: {href: item.dllink} "><img data-bind="src: item.thumbnailLink, attr: { alt: item.thumbnailAlt }" height="50"></img></a></td>
+                    <td><a target="_blank" data-bind="attr: {href: item.dllink} "><strong data-bind="text: item.title" class="row-summary"></strong></a></td>
+                    <td data-bind="currency: item.price" class="row-price"></td>
+                </tr>
+            </tbody>
+            <tr style="height:20px"></tr>
+            <tr>
+                <th class="checkout-total">Total ( <span data-bind="text: data.totalItem"></span> items ) :&nbsp;</th>
+                <th data-bind="currency: data.totalPrice" class="checkout-price"></th>
+            </tr>
+        </table>
     </div>
 </script>
