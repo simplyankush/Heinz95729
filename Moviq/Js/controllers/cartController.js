@@ -10,11 +10,12 @@
             }).done(function (data) {
                 var result = new Boolean(JSON.parse(data));
                 if (result == true) {
-                    viewEngine.setView({
-                        template: 't-productdeleted',
-                        data: {}
-                    });
-
+                    //viewEngine.setView({
+                    //    template: 't-productdeleted',
+                    //    data: {}
+                    //});
+                    window.location.href = "/#/checkout";
+                    window.location.reload();
                 }
                 else {
                     viewEngine.setView({
