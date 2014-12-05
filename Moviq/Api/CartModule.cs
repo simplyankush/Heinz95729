@@ -38,7 +38,7 @@ namespace Moviq.Api
                     IProduct product = bookDomain.Repo.Get(productname);
 
 
-                    if (!currentUser.Cart.Contains(product))
+                    if (!currentUser.Cart.Contains(product.Uid))
                     {
                         currentUser.Cart.Add(product.Uid);
                         userRepo.Set(currentUser);
