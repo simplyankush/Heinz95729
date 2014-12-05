@@ -749,7 +749,8 @@ exports.getWindowSize = function(){
 
 }); // module: browser/tty.js
 
-require.register("context.js", function(module, exports, require){
+require.register("
+.js", function(module, exports, require){
 
 /**
  * Expose `Context`.

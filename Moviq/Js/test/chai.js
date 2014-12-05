@@ -2173,7 +2173,9 @@ module.exports = function (chai, _) {
     if (msg) flag(this, 'message', msg);
     var obj = flag(this, 'object')
       , itself = flag(this, 'itself')
-      , context = ('function' === _.type(obj) && !itself)
+      , 
+
+ = ('function' === _.type(obj) && !itself)
         ? obj.prototype[method]
         : obj[method];
 

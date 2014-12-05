@@ -12,6 +12,7 @@ namespace Moviq.Api
     using Nancy.Security;
     using Newtonsoft.Json;
     using System;
+    using System.Collections;
 
     public class CartModule : NancyModule
     {
@@ -26,20 +27,21 @@ namespace Moviq.Api
 
             this.Get["/api/cart/add", true] = async (args, cancellationToken) => {
                 string productname = this.Request.Query.q; // +" AND _type: book";
-                var currentUser = this.Context.CurrentUser;
+                var currentUser = (IUser)this.Context.CurrentUser;
+                
                if (currentUser != null)
                 {
                     string username = currentUser.UserName;
 
-                    var user = userRepo.GetByUsername(username);
+                //    var user = userRepo.GetByUsername(username);
                      
                     IProduct product = bookDomain.Repo.Get(productname);
-                    
 
-                    if (!user.Cart.Contains(product))
+
+                    if (!currentUser.Cart.Contains(product))
                     {
-                        user.Cart.Add(product);
-                        userRepo.Set(user);
+                        currentUser.Cart.Add(product.Uid);
+                        userRepo.Set(currentUser);
                         
                         return helper.ToJson(true);
                     }
@@ -77,14 +79,20 @@ namespace Moviq.Api
 
             this.Get["/api/cart/full"] = args =>
             {
-                var currentUser = this.Context.CurrentUser;
-
+                var currentUser = (IUser)this.Context.CurrentUser;
+                ArrayList fullcart = new ArrayList();
                 if (currentUser != null)
                 {
                     string username = currentUser.UserName;
 
-                    IUser user = userRepo.GetByUsername(username);
-                    return helper.ToJson(user.Cart);
+                    //IUser user = userRepo.GetByUsername(username);
+                    for (int i = 0; i < currentUser.Cart.Count; i++)
+                    {
+                        string productname = currentUser.Cart[i].ToString();
+                        IProduct product = bookDomain.Repo.Get(productname);
+                        fullcart.Add(product);                        
+                    }
+                        return helper.ToJson(fullcart);
                 }
                 return helper.ToJson(false);
 

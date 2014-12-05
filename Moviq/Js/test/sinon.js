@@ -1999,7 +1999,9 @@ this.sinon = (function () {
                         this.returnValueDefined);
             },
 
-            invoke: function (context, args) {
+            invoke: function (
+
+, args) {
                 callCallback(this, args);
 
                 if (this.exception) {
