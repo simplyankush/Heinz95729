@@ -26,6 +26,13 @@
 
         });
 
+        routes.get(/^\/#\/stripe\/?/i, function (context) {
+            viewEngine.setView({
+                template: 't-stripe',
+                data: {}
+            });
+        });
+
 
 
 
