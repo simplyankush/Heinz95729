@@ -55,8 +55,9 @@ namespace Moviq.Api
             //    return helper.ToJson(result);
             //};
 
-            this.Get["/api/cart/delete/{uid}"] = args =>
+            this.Get["/api/cart/delete/", true] = async (args, cancellationToken) =>
             {
+                string productname = this.Request.Query.q;
                 var currentUser = this.Context.CurrentUser;
 
                 if (currentUser != null)
@@ -64,8 +65,8 @@ namespace Moviq.Api
                     string username = currentUser.UserName;
 
                     var user = userRepo.GetByUsername(username);
-                    string product = args.uid;
-                    user.Cart.Remove(product);
+
+                    user.Cart.Remove(productname);
                     userRepo.Set(user);
                     return helper.ToJson(true);
                 }

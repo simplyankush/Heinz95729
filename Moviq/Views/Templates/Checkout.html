@@ -13,8 +13,13 @@
                         <td><a data-bind="href: item.detailsLink"><img data-bind="src: item.thumbnailLink, attr: { alt: item.thumbnailAlt }" height="50"></img></a></td>
                         <td><a data-bind="href: item.detailsLink"><strong data-bind="text: item.title" class="row-summary"></strong></a></td>
                         <td data-bind="currency: item.price" class="row-price"></td>
-                        <td data-bind="click: function() { alert('item is removed-ish'); cart.removeCartItem(item); }" class="row-remove">
-                            <a href="#" class="btn btn-xs btn-danger"><span class="glyphicon glyphicon-remove"></span>  remove</a>
+                        
+                        <td>
+                         <form action="/#/cart/delete" method="get">
+                             <button class="btn btn-xs btn-danger">Remove</button>
+                <input type="hidden" name = "q" data-bind="value: item.uid" />
+            </form>
+              
                         </td>
                     </tr>
                 </tbody>
