@@ -1,15 +1,57 @@
 ﻿/*global define, JSON*/
 
 define('controllers/checkoutController', {
-    init: function ($, routes, viewEngine,Cart,Books) {
+    init: function ($, routes, viewEngine, Cart, Books) {
         "use strict";
 
 
         routes.get(/^\/#\/deliveritems\/?/i, function (context) {
-            viewEngine.setView({
-                template: 't-deliveritems',
-                data: {}
-            });
+
+            $.ajax({
+                url: '/api/cart/full',
+                method: 'GET'
+            }).done(function (data) {
+                //var books = new Books(JSON.parse(data));
+
+                var dataModel = function (data) {
+
+                    var self = {};
+
+                    self.boughtItems = [    // later changes to the live data
+                                       { thumbnailLink: '/images/books/beforeIGo.jpg', dllink: 'http://www.gasl.org/refbib/Carroll__Alice_1st.pdf', title: 'Alice', detailsLink: 'http://www.google.com', price: 4.99 },
+                                       { thumbnailLink: '/images/books/beforeIGo.jpg', dllink: 'http://www.gasl.org/refbib/Carroll__Alice_1st.pdf', title: 'Sample Book: The Sequel', detailsLink: 'http://www.yahoo.com', price: 5.99 },
+                                       { thumbnailLink: '/images/books/beforeIGo.jpg', dllink: 'http://www.gasl.org/refbib/Carroll__Alice_1st.pdf', title: 'Sample Book: The Exciting End of the Trilogy', detailsLink: 'http://www.bing.com', price: 6.99 }
+                    ];
+
+                    //self.testcart = books.books;
+
+                    self.totalPrice = ko.computed(function () {
+                        var total = 0, i = 0, current;
+
+                        for (i; i < self.boughtItems.length; i++) {
+                            current = self.boughtItems[i];
+                            total += current.price;
+                        };
+
+                        return total;
+                    });
+
+                    self.totalItem = ko.computed(function () {
+                        return self.boughtItems.length;
+                    });
+
+                    return self;
+                };
+
+
+
+
+
+                viewEngine.setView({
+                    template: 't-deliveritems',
+                    data: dataModel()
+                });
+            })
         });
 
 
@@ -19,7 +61,7 @@ define('controllers/checkoutController', {
                 data: {}
             });
         });
-    
+
         routes.get('/#/checkout', function (context) {
             $.ajax({
                 url: '/api/cart/full',
@@ -29,7 +71,7 @@ define('controllers/checkoutController', {
 
                 //alert(String(books));
                 var dataModel = function (data) {
-                 
+
                     var self = {};
 
 
@@ -44,13 +86,13 @@ define('controllers/checkoutController', {
                     self.totalPrice = ko.computed(function () {
                         var total = 0, i = 0, current;
 
-                        
+
 
                         for (i; i < self.testcart().length; i++) {
                             current = self.testcart()[i];
                             total += current.price();
                         };
-           
+
                         return total;
                     });
 
@@ -72,8 +114,10 @@ define('controllers/checkoutController', {
                 });
             });
 
-    
 
-    
+
+
         }
-        )}});
+        )
+    }
+});
