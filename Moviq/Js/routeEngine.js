@@ -7,9 +7,7 @@ define('routeEngine', { init: function ($, globalSammy, config, utils, viewEngin
     
     sammy = globalSammy(config.selectors.main, function () {
         this.routablePath = function (path) {
-            // By default, sammy strips the query string from the splat and adds it to the 
-
-.params (json)
+            // By default, sammy strips the query string from the splat and adds it to the .params (json)
             // That is less useful to us, so we are overriding this behaviour, to maintain the full path
             // return path.replace(QUERY_STRING_MATCHER, '');
             return path;
