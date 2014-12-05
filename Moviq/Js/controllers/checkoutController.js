@@ -4,6 +4,21 @@ define('controllers/checkoutController', {
     init: function ($, routes, viewEngine,Cart,Books) {
         "use strict";
 
+
+        routes.get(/^\/#\/deliveritems\/?/i, function (context) {
+            viewEngine.setView({
+                template: 't-deliveritems',
+                data: {}
+            });
+        });
+
+
+        routes.get(/^\/#\/checkoutfailed\/?/i, function (context) {
+            viewEngine.setView({
+                template: 't-badcharge',
+                data: {}
+            });
+        });
     
         routes.get('/#/checkout', function (context) {
             $.ajax({
