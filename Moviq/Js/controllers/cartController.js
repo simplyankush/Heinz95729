@@ -18,10 +18,7 @@
                     window.location.reload();
                 }
                 else {
-                    viewEngine.setView({
-                        template: 't-productexists',
-                        data: {}
-                    });
+                    alert("failed to delete product from cart");
                 }
 
 
@@ -53,17 +50,18 @@
             }).done(function (data) {
                 var result = new Boolean (JSON.parse(data));
                 if (result == true) {
-                    viewEngine.setView({
-                        template: 't-productadded',
-                        data: {}
-                    });
-
+                    //viewEngine.setView({
+                    //    template: 't-productadded',
+                    //    data: {}
+                    //});
+                    alert("Product added to cart");
                 }
                 else {
-                    viewEngine.setView({
-                        template: 't-productexists',
-                        data: {}
-                    });
+                    //viewEngine.setView({
+                    //    template: 't-productexists',
+                    //    data: {}
+                    //});
+                    alert("Product exists in cart");
                 }
 
 
