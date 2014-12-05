@@ -68,7 +68,7 @@ require(['routeEngine', 'views/viewEngine', 'config', 'utils',
             homeController = homeControllerCtor.init(routeEngine, viewEngine, Products, Product,Cart);
             authController = authControllerCtor.init($, routeEngine, viewEngine, Cart);
             profileController = profileControllerCtor.init($, routeEngine, viewEngine, Cart);
-            checkoutController = checkoutControllerCtor.init($, routeEngine, viewEngine,Cart);
+            checkoutController = checkoutControllerCtor.init($, routeEngine, viewEngine,Cart,Books);
             cartController = cartControllerCtor.init(routeEngine, viewEngine, Products, Product, Cart); 
         }());
         //endregion CONTROLLERS

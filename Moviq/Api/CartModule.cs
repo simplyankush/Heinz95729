@@ -72,6 +72,25 @@ namespace Moviq.Api
                 return helper.ToJson(false);
                 
             };
+
+
+            this.Get["/api/cart/full"] = args =>
+            {
+                var currentUser = this.Context.CurrentUser;
+
+                if (currentUser != null)
+                {
+                    string username = currentUser.UserName;
+
+                    IUser user = userRepo.GetByUsername(username);
+                    return helper.ToJson(user.Cart);
+                }
+                return helper.ToJson(false);
+
+            };       
+        
+        
+        
         }
     }
 }
