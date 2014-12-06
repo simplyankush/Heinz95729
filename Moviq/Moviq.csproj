@@ -203,6 +203,14 @@
     <Compile Include="Controllers\HomeModule.cs" />
     <Compile Include="Controllers\UserProfileModule.cs" />
     <Compile Include="Helpers\ModuleHelpers.cs" />
+	<Compile Include="Helpers\StripeCard.cs" />
+	<Compile Include="Helpers\StripeCharge.cs" />
+	<Compile Include="Helpers\StripeCreditCardInfo.cs" />
+	<Compile Include="Helpers\StripeEnumConverter.cs" />
+	<Compile Include="Helpers\StripeModule.cs" />
+	<Compile Include="Helpers\StripeObject.cs" />
+	<Compile Include="Helpers\StripePayment.cs" />
+	
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
