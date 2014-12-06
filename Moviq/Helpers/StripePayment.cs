@@ -43,7 +43,7 @@ namespace Moviq.Api
         }
 
 
-        public StripeCharge Charge(int amount_cents, string currency, string token, string description)
+        public bool Charge(int amount_cents, string currency, string token, string description)
         {
             if (token == null)
                 throw new ArgumentNullException("token");
@@ -51,7 +51,7 @@ namespace Moviq.Api
             return Charge(amount_cents, currency, null, token, description);
         }
 
-        StripeCharge Charge(int amount_cents, string currency, string customer, string token, string description)
+        bool Charge(int amount_cents, string currency, string customer, string token, string description)
         {
             if (amount_cents < 0)
                 throw new ArgumentOutOfRangeException("amount_cents", "Must be greater than or equal 0");
@@ -73,10 +73,17 @@ namespace Moviq.Api
             return DoRequest<StripeCharge>(ep, "POST", str.ToString());
         }
 
-        protected virtual T DoRequest<T>(string endpoint, string method = "GET", string body = null)
+        protected virtual bool DoRequest<T>(string endpoint, string method = "GET", string body = null)
         {
-            var json = DoRequest(endpoint, method, body);
-            return JsonConvert.DeserializeObject<T>(json);
+            string json = DoRequest(endpoint, method, body);
+            int startIndex = json.IndexOf("paid");
+            int endIndex = json.IndexOf(",\n", startIndex);
+            string paidInfo = json.Substring(startIndex+7, endIndex-startIndex-7);
+            if (paidInfo.Contains("true"))
+                return true;
+            else
+                return false;
+//            return JsonConvert.DeserializeObject<T>(json);
         }
 
         protected virtual string DoRequest(string endpoint, string method, string body)

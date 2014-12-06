@@ -194,6 +194,7 @@
   <ItemGroup>
     <Compile Include="Api\CartModule.cs" />
     <Compile Include="Api\BooksModule.cs" />
+    <Compile Include="Api\PaymentModule.cs" />
     <Compile Include="Api\DownloadModule.cs" />
     <Compile Include="Api\ExampleSecureModule.cs" />
     <Compile Include="Api\SearchModule.cs" />
@@ -203,14 +204,13 @@
     <Compile Include="Controllers\HomeModule.cs" />
     <Compile Include="Controllers\UserProfileModule.cs" />
     <Compile Include="Helpers\ModuleHelpers.cs" />
-	<Compile Include="Helpers\StripeCard.cs" />
-	<Compile Include="Helpers\StripeCharge.cs" />
-	<Compile Include="Helpers\StripeCreditCardInfo.cs" />
-	<Compile Include="Helpers\StripeEnumConverter.cs" />
-	<Compile Include="Helpers\StripeModule.cs" />
-	<Compile Include="Helpers\StripeObject.cs" />
-	<Compile Include="Helpers\StripePayment.cs" />
-	
+    <Compile Include="Helpers\StripeCard.cs" />
+    <Compile Include="Helpers\StripeCharge.cs" />
+    <Compile Include="Helpers\StripeCreditCardInfo.cs" />
+    <Compile Include="Helpers\StripeEnumConverter.cs" />
+    <Compile Include="Helpers\StripeHelper.cs" />
+    <Compile Include="Helpers\StripeObject.cs" />
+    <Compile Include="Helpers\StripePayment.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

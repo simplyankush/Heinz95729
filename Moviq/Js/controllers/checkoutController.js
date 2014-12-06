@@ -6,9 +6,9 @@ define('controllers/checkoutController', {
 
         // POST /login
         // login
-        routes.post('/test', function (context) {
+        routes.post('/#/test', function (context) {
             var totalamtcheck = context.params.totalamtcheck;
-            alert(String(totalamtcheck));
+            //alert(String(totalamtcheck));
             Stripe.setPublishableKey('pk_test_SHUCnuSdIBx8hlpn2m3JohGt');
             // ...
 
@@ -17,7 +17,7 @@ define('controllers/checkoutController', {
 
             // Disable the submit button to prevent repeated clicks
             $form.find('button').prop('disabled', true);
-            alert('jQuery running');
+            
             Stripe.card.createToken($form, stripeResponseHandler);
 
             // Prevent the form from submitting with the default action
@@ -34,10 +34,32 @@ define('controllers/checkoutController', {
                 } else {
                     // response contains id and card, which contains additional card details
                     var token = response.id;
-                    alert(String(token));
+                    //alert(String(token));
                     // Insert the token into the form so it gets submitted to the server
                     $form.append($('<input type="hidden" name="stripeToken" />').val(token));
                     // and submit
+
+                    $.ajax({
+                        url: '/api/pay/?token=' + String(token) + '&amt=' + String(totalamtcheck),
+                        method: 'GET'
+                    }).done(function (data) {
+                        alert('Charged Successfully');
+                        var result = new Boolean(JSON.parse(data));
+                        if (result == true) {
+                            alert('Charged Successfully');
+                            viewEngine.setView({
+                                template: 't - productadded',
+                                data: {}
+                            }); 
+                        }
+                        else {
+                            alert("failed to charge card");
+                            viewEngine.setView({
+                                template: 't-stripe',
+                                data: { totalPrice: totalamtcheck }
+                            });
+                        }
+                    })
                     $form.get(0).submit();
                 }
             };

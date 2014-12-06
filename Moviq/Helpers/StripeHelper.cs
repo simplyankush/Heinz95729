@@ -19,21 +19,17 @@
     using System.IO;
     
 
-    public class StripeModule : NancyModule
+    public class StripeHelper
     {
-        
-        public StripeModule()
+
+        public bool Charge(string token, int cents)
         {
             StripePayment payment = new StripePayment("sk_test_ujD3HnEZlZIcPqAJ9KUoaWhr");
-            //TestSimpleCharge(payment);
-        }
-
-        static void TestSimpleCharge(StripePayment payment)
-        {
-            string token = "tok_156a6sB1dqkk1NBjfqEKHAWy";
-            StripeCharge charge = payment.Charge(5001, "usd", token, "Test charge");
+            //string token = "tok_156a6sB1dqkk1NBjfqEKHAWy";
+            bool charge = payment.Charge(cents, "usd", token, "Test charge");
             Console.WriteLine(charge);
-            string charge_id = charge.ID;
+            //string charge_id = charge.ID;
+            return charge;
         }
     }
 }
