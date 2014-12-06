@@ -96,9 +96,7 @@ namespace Moviq.Api
                 }
                 return helper.ToJson(false);
 
-            };       
-        
-        
+            };  
         
         }
     }

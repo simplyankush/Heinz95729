@@ -57,9 +57,11 @@
   <ItemGroup>
     <Compile Include="ModelBinders.cs" />
     <Compile Include="NoSqlSearchResult.cs" />
+    <Compile Include="Download.cs" />
     <Compile Include="Product.cs" />
     <Compile Include="ProductDomain.cs" />
     <Compile Include="ProductFactory.cs" />
+    <Compile Include="DownloadNoSqlRepository.cs" />
     <Compile Include="ProductNoSqlRepository.cs" />
     <Compile Include="ProductSqlRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

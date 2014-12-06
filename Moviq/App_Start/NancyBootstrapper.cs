@@ -16,6 +16,7 @@
     using RestSharp;
     using System.IO;
     using System;
+    using System.Linq;
     using Nancy.Authentication.Forms;
     using Moviq.Domain.Auth;
 
@@ -59,6 +60,18 @@
             {
                 return new ProductNoSqlRepository(
                     container.Resolve<IFactory<IProduct>>(),
+                    container.Resolve<ICouchbaseClient>(),
+                    container.Resolve<ILocale>(),
+                    // for some reason, resolving the RestClient throws a StackOverflow Exception
+                    // so we'll new one up explicitly
+                    new RestClient(), //container.Resolve<IRestClient>(),
+                    "http://localhost:9200/moviq/_search");
+            });
+
+            container.Register<IRepository<IDownload>>((cntr, namedParams) =>
+            {
+                return new DownloadNoSqlRepository(
+                    container.Resolve<IFactory<IDownload>>(),
                     container.Resolve<ICouchbaseClient>(),
                     container.Resolve<ILocale>(),
                     // for some reason, resolving the RestClient throws a StackOverflow Exception
