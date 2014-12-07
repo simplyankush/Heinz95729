@@ -125,6 +125,7 @@
     <Content Include="Js\controllers\checkoutController.js" />
     <Content Include="Js\controllers\cartController.js" />
     <Content Include="Js\controllers\profileController.js" />
+    <Content Include="Js\controllers\stripeController.js" />
     <Content Include="Js\lib\grid.js" />
     <Content Include="Js\lib\ko.binders.js" />
     <Content Include="Js\lib\modernizr.custom.js" />
@@ -174,6 +175,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Home\home.html" />
+    <Content Include="Views\Templates\addlinks.html" />
     <Content Include="Views\Templates\book-details.html" />
     <Content Include="Views\Templates\checkout.html" />
     <Content Include="Views\Templates\error-404.html" />

@@ -11,8 +11,8 @@
             </thead>
             <tbody data-bind="foreach: { data: data.boughtItems, as: 'item' }" class="grid-body">
                 <tr class="checkout-row">
-                    <td><a target="_blank" data-bind="attr: {href: item.dllink} "><img data-bind="src: item.thumbnailLink, attr: { alt: item.thumbnailAlt }" height="50"></img></a></td>
-                    <td><a target="_blank" data-bind="attr: {href: item.dllink} "><strong data-bind="text: item.title" class="row-summary"></strong></a></td>
+                    <td><a target="_blank" data-bind="attr: {href: item.downloadLink} "><img data-bind="src: item.thumbnailLink, attr: { alt: item.thumbnailAlt }" height="50"></img></a></td>
+                    <td><a target="_blank" data-bind="attr: {href: item.downloadLink} "><strong data-bind="text: item.title" class="row-summary"></strong></a></td>
                     <td data-bind="currency: item.price" class="row-price"></td>
                 </tr>
             </tbody>

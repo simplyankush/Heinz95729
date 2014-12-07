@@ -26,6 +26,7 @@ define('models/product', { init: function (ko) {
             product.price = ko.observable(productData.price || undefined);
             product.images = ko.observableArray();
             product.thumbnailLink = ko.observable(productData.thumbnailLink || '/images/products/default.png');
+            product.downloadLink = ko.observable(productData.downloadLink);
             product.thumbnailAlt = ko.computed(function () {
                 return 'thumbnail for ' + product.title();
             });

@@ -72,7 +72,7 @@ define('controllers/checkoutController', {
         routes.get(/^\/#\/deliveritems\/?/i, function (context) {
 
             $.ajax({
-                url: '/api/cart/deliver',
+                url: '/api/cart/full',
                 method: 'GET'
             }).done(function (data) {
                 var books = new Books(JSON.parse(data));
@@ -181,7 +181,6 @@ define('controllers/checkoutController', {
 
 
 
-        }
-        )
+        });
     }
 });

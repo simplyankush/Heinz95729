@@ -20,6 +20,7 @@ namespace Moviq.Domain.Products
         public object Metadata { get; set; }
         public decimal Price { get; set; }
         public string ThumbnailLink { get; set; }
+        public string DownloadLink { get; set; }
         public IEnumerable<string> Tags { get; set; }
         public string _type { get; set; }
 
