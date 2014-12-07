@@ -47,10 +47,9 @@ define('controllers/checkoutController', {
                         var result = new Boolean(JSON.parse(data));
                         if (result == true) {
                             alert('Charged Successfully');
-                            viewEngine.setView({
-                                template: 't-productadded',
-                                data: {}
-                            }); 
+                            window.location.href = "/#/deliveritems";
+
+
                         }
                         else {
                             alert("failed to charge card");

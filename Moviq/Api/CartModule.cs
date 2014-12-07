@@ -77,7 +77,7 @@ namespace Moviq.Api
             };
 
 
-            this.Get["/api/cart/full"] = args =>
+             this.Get["/api/cart/full"] = args =>
             {
                 var currentUser = (IUser)this.Context.CurrentUser;
                 ArrayList fullcart = new ArrayList();
@@ -92,8 +92,9 @@ namespace Moviq.Api
                         IProduct product = bookDomain.Repo.Get(productname);
                         fullcart.Add(product);                        
                     }
-                        return helper.ToJson(fullcart);
+                   return helper.ToJson(fullcart);
                 }
+                
                 return helper.ToJson(false);
 
             };  
