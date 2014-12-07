@@ -97,7 +97,34 @@ namespace Moviq.Api
                 
                 return helper.ToJson(false);
 
-            };  
+            };
+
+             this.Get["/api/cart/paid"] = args =>
+             {
+                 var currentUser = (IUser)this.Context.CurrentUser;
+                 ArrayList fullcart = new ArrayList();
+                 if (currentUser != null)
+                 {
+                     string username = currentUser.UserName;
+
+                     //IUser user = userRepo.GetByUsername(username);
+                     for (int i = 0; i < currentUser.Cart.Count; i++)
+                     {
+                         string productname = currentUser.Cart[i].ToString();
+                         IProduct product = bookDomain.Repo.Get(productname);
+                         fullcart.Add(product);
+                     }
+
+                     currentUser.Cart = new ArrayList();
+                     userRepo.Set(currentUser);
+                     
+                     return helper.ToJson(fullcart);
+                 }
+
+                 return helper.ToJson(false);
+
+             };  
+
         
         }
     }

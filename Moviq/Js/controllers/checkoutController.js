@@ -6,7 +6,7 @@ define('controllers/checkoutController', {
 
         // POST /login
         // login
-        routes.get(/^\/#\/test\/?/i, function (context) {
+        routes.get(/^\/#\/pay\/?/i, function (context) {
             var totalamtcheck = context.params.totalamtcheck;
             //alert(String(totalamtcheck));
             Stripe.setPublishableKey('pk_test_SHUCnuSdIBx8hlpn2m3JohGt');
@@ -71,7 +71,7 @@ define('controllers/checkoutController', {
         routes.get(/^\/#\/deliveritems\/?/i, function (context) {
 
             $.ajax({
-                url: '/api/cart/full',
+                url: '/api/cart/paid',
                 method: 'GET'
             }).done(function (data) {
                 var books = new Books(JSON.parse(data));
