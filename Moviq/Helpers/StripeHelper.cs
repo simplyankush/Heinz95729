@@ -17,14 +17,15 @@
     using System.Threading.Tasks;
     using System.Text;
     using System.IO;
-    
+    using System.Configuration;
 
     public class StripeHelper
     {
 
         public bool Charge(string token, int cents)
         {
-            StripePayment payment = new StripePayment("sk_test_ujD3HnEZlZIcPqAJ9KUoaWhr");
+            string secretkey = ConfigurationManager.AppSettings["stripesecret"];
+            StripePayment payment = new StripePayment(secretkey);
             //string token = "tok_156a6sB1dqkk1NBjfqEKHAWy";
             bool charge = payment.Charge(cents, "usd", token, "Test charge");
             Console.WriteLine(charge);

@@ -6,7 +6,7 @@ define('controllers/checkoutController', {
 
         // POST /login
         // login
-        routes.post('/#/test', function (context) {
+        routes.get(/^\/#\/test\/?/i, function (context) {
             var totalamtcheck = context.params.totalamtcheck;
             //alert(String(totalamtcheck));
             Stripe.setPublishableKey('pk_test_SHUCnuSdIBx8hlpn2m3JohGt');
@@ -48,7 +48,7 @@ define('controllers/checkoutController', {
                         if (result == true) {
                             alert('Charged Successfully');
                             viewEngine.setView({
-                                template: 't - productadded',
+                                template: 't-productadded',
                                 data: {}
                             }); 
                         }
@@ -60,10 +60,10 @@ define('controllers/checkoutController', {
                             });
                         }
                     })
-                    $form.get(0).submit();
+                    //$form.get(0).submit();
                 }
             };
-            alert('Test');
+            
             //return true; // ignore
         });
 
