@@ -6,7 +6,7 @@ define('controllers/checkoutController', {
 
         // POST /login
         // login
-        routes.get(/^\/#\/pay\/?/i, function (context) {
+        routes.post(/^\/#\/pay\/?/i, function (context) {
             var totalamtcheck = context.params.totalamtcheck;
             //alert(String(totalamtcheck));
             Stripe.setPublishableKey('pk_test_SHUCnuSdIBx8hlpn2m3JohGt');
