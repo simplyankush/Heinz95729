@@ -42,12 +42,14 @@ namespace Moviq.Api
                     {
                         currentUser.Cart.Add(product.Uid);
                         userRepo.Set(currentUser);
-                        
-                        return helper.ToJson(true);
+
+                        return helper.ToJson(1);
                     }
+
+                    return helper.ToJson(2);
                 }
 
-               return helper.ToJson(false);
+               return helper.ToJson(3);
                     //helper.ToJson(bookDomain.Repo.Get(args.uid));
             };
 
@@ -94,9 +96,37 @@ namespace Moviq.Api
                     }
                         return helper.ToJson(fullcart);
                 }
+
+                return helper.ToJson(false);
+
+            };
+
+            this.Get["/api/cart/paid"] = args =>
+            {
+                var currentUser = (IUser)this.Context.CurrentUser;
+                ArrayList fullcart = new ArrayList();
+                if (currentUser != null)
+                {
+                    string username = currentUser.UserName;
+
+                    //IUser user = userRepo.GetByUsername(username);
+                    for (int i = 0; i < currentUser.Cart.Count; i++)
+                    {
+                        string productname = currentUser.Cart[i].ToString();
+                        IProduct product = bookDomain.Repo.Get(productname);
+                        fullcart.Add(product);
+                    }
+
+                    currentUser.Cart = new ArrayList();
+                    userRepo.Set(currentUser);
+
+                    return helper.ToJson(fullcart);
+                }
+
                 return helper.ToJson(false);
 
             };  
+  
         
         }
     }

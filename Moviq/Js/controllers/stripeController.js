@@ -15,14 +15,14 @@ routes.get(/^\/#\/stripe\/charge\/?/i, function (context) {  // /books
             //    template: 't-productadded',
             //    data: {}
             //});
-            alert("Cart charged successfully");
+            //alert("Cart charged successfully");
         }
         else {
             //viewEngine.setView({
             //    template: 't-productexists',
             //    data: {}
             //});
-            alert("Charging failed");
+            //alert("Charging failed");
         }
 
 

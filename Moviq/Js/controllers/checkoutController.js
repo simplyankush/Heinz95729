@@ -6,7 +6,7 @@ define('controllers/checkoutController', {
 
         // POST /login
         // login
-        routes.get(/^\/#\/test\/?/i, function (context) {
+        routes.get(/^\/#\/pay\/?/i, function (context) {
             var totalamtcheck = context.params.totalamtcheck;
             //alert(String(totalamtcheck));
             Stripe.setPublishableKey('pk_test_SHUCnuSdIBx8hlpn2m3JohGt');
@@ -43,19 +43,16 @@ define('controllers/checkoutController', {
                         url: '/api/pay/?token=' + String(token) + '&amt=' + String(totalamtcheck),
                         method: 'GET'
                     }).done(function (data) {
-                        alert('Charged Successfully');
+                        
                         var result = new Boolean(JSON.parse(data));
-                        if (result == true) {
-                            alert('Charged Successfully');
-                            viewEngine.setView({
-                                template: 't-productadded',
-                                data: {}
-                            }); 
+                        if (result == true) {                        
+                            window.location.href = "/#/deliveritems";
+
+
                         }
                         else {
-                            alert("failed to charge card");
                             viewEngine.setView({
-                                template: 't-stripe',
+                                template: 't-badcharge',
                                 data: { totalPrice: totalamtcheck }
                             });
                         }
@@ -72,7 +69,7 @@ define('controllers/checkoutController', {
         routes.get(/^\/#\/deliveritems\/?/i, function (context) {
 
             $.ajax({
-                url: '/api/cart/full',
+                url: '/api/cart/paid',
                 method: 'GET'
             }).done(function (data) {
                 var books = new Books(JSON.parse(data));
