@@ -43,11 +43,13 @@ namespace Moviq.Api
                         currentUser.Cart.Add(product.Uid);
                         userRepo.Set(currentUser);
                         
-                        return helper.ToJson(true);
+                        return helper.ToJson(1);
                     }
+
+                    return helper.ToJson(2);
                 }
 
-               return helper.ToJson(false);
+               return helper.ToJson(3);
                     //helper.ToJson(bookDomain.Repo.Get(args.uid));
             };
 

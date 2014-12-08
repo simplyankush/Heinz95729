@@ -27,7 +27,7 @@
         });
 
         routes.get(/^\/#\/stripe\/?/i, function (context) {
-            
+
             viewEngine.setView({
                 template: 't-stripe',
                 data: { totalPrice: context.params.totalamt }
@@ -42,13 +42,22 @@
                 url: '/api/cart/add/?q=' + context.params.q,
                 method: 'GET'
             }).done(function (data) {
-                var result = new Boolean (JSON.parse(data));
-                if (result == true) {
+                var result = JSON.parse(data);
+                
+                if (result == 1) {
                     //viewEngine.setView({
                     //    template: 't-productadded',
                     //    data: {}
                     //});
                     alert("Product added to cart");
+                }
+
+                else if (result == 3) {
+                    alert("Must be logged in to add items to cart.");
+                    viewEngine.setView({
+                        template: 't-login',
+                        data: {  }
+                    });
                 }
                 else {
                     //viewEngine.setView({
@@ -62,13 +71,12 @@
             });
 
         });
-               
+
     }
 });
 
-    
-    
-    
-    
-    
-    
+
+
+
+
+
