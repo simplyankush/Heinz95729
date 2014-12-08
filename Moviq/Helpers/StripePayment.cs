@@ -76,13 +76,16 @@ namespace Moviq.Api
         protected virtual bool DoRequest<T>(string endpoint, string method = "GET", string body = null)
         {
             string json = DoRequest(endpoint, method, body);
-            int startIndex = json.IndexOf("paid");
-            int endIndex = json.IndexOf(",\n", startIndex);
-            string paidInfo = json.Substring(startIndex+7, endIndex-startIndex-7);
-            if (paidInfo.Contains("true"))
-                return true;
-            else
-                return false;
+            if (json != null) { 
+                int startIndex = json.IndexOf("paid");
+                int endIndex = json.IndexOf(",\n", startIndex);
+                string paidInfo = json.Substring(startIndex+7, endIndex-startIndex-7);
+                if (paidInfo.Contains("true"))
+                    return true;
+                else
+                    return false;
+            }
+            return false;
 //            return JsonConvert.DeserializeObject<T>(json);
         }
 
@@ -117,8 +120,7 @@ namespace Moviq.Api
                     if (resp != null)
                         status_code = resp.StatusCode;
 
-                    if ((int)status_code <= 500)
-                        throw new Exception(json_error);
+                    return null;
                 }
                 throw;
             }
