@@ -43,19 +43,19 @@ define('controllers/checkoutController', {
                         url: '/api/pay/?token=' + String(token) + '&amt=' + String(totalamtcheck),
                         method: 'GET'
                     }).done(function (data) {
-                        //alert('Charged Successfully');
+                        alert('Charged Successfully');
                         var result = new Boolean(JSON.parse(data));
                         if (result == true) {
-                            alert('Card Charged Successfully');
+                            alert('Charged Successfully');
                             viewEngine.setView({
-                                template: 't-deliveritems',
+                                template: 't-productadded',
                                 data: {}
                             }); 
                         }
                         else {
-                            alert("Failed to charge card");
+                            alert("failed to charge card");
                             viewEngine.setView({
-                                template: 't-badcharge',
+                                template: 't-stripe',
                                 data: { totalPrice: totalamtcheck }
                             });
                         }
