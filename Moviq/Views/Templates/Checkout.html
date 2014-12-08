@@ -4,7 +4,7 @@
         <br />
         <div class="">
             <!-- CHANGE THIS TO cart.products() for live version.  IS THIS THE PROPER NOMENCLATURE FOR CART.PRODUCTS()???-->
-            <table class="checkout-table">
+            <table class="checkout-table" data-bind="ifnot: data.testcart().length == 0">
                 <thead style="font-size:16px">
                     <tr><th>Cart Items</th><th></th><th>Price</th><th>Remove</th></tr>
                 </thead>
@@ -29,11 +29,14 @@
                     <th data-bind="currency: data.totalPrice" class="checkout-price"></th>
                 </tr>
             </table>
+            <h3 data-bind="if: data.testcart().length == 0">Whoa there, partner.  Nothing is in your cart.  Go find some nice books.</h3>
         </div>
 
 
-        <form action="/#/stripe" method="get">
-            <button id="checkout" class="buy-now">make them mine: CHECKOUT</button>
+        <form action="/#/stripe" method="get" data-bind="ifnot: data.testcart().length == 0">
+            <button id=" checkout" class="buy-now">
+                make them mine: CHECKOUT
+            </button>
             <input type="hidden" name="totalamt" data-bind="value: data.totalPrice" />
         </form>
 
