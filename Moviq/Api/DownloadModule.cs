@@ -27,7 +27,7 @@
                 {
                     string username = currentUser.UserName;
 
-                    //IUser user = userRepo.GetByUsername(username);
+                   
                     for (int i = 0; i < currentUser.Cart.Count; i++)
                     {
                         string productname = currentUser.Cart[i].ToString();

@@ -23,7 +23,7 @@
                 user.Password = null;
 
                 return JsonConvert.SerializeObject(user);
-                //return 200;
+                
             };
 
             this.Get["/api/examples/context"] = args =>

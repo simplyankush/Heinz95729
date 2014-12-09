@@ -57,11 +57,11 @@ define('controllers/checkoutController', {
                             });
                         }
                     })
-                    //$form.get(0).submit();
+                   
                 }
             };
             
-            //return true; // ignore
+            
         });
 
 
@@ -80,13 +80,7 @@ define('controllers/checkoutController', {
 
                     self.boughtItems = books.books;
 
-                    //self.boughtItems = [    // later changes to the live data
-                    //                   { thumbnailLink: '/images/books/beforeIGo.jpg', dllink: 'http://www.gasl.org/refbib/Carroll__Alice_1st.pdf', title: 'Alice', detailsLink: 'http://www.google.com', price: 4.99 },
-                    //                   { thumbnailLink: '/images/books/beforeIGo.jpg', dllink: 'http://www.gasl.org/refbib/Carroll__Alice_1st.pdf', title: 'Sample Book: The Sequel', detailsLink: 'http://www.yahoo.com', price: 5.99 },
-                    //                   { thumbnailLink: '/images/books/beforeIGo.jpg', dllink: 'http://www.gasl.org/refbib/Carroll__Alice_1st.pdf', title: 'Sample Book: The Exciting End of the Trilogy', detailsLink: 'http://www.bing.com', price: 6.99 }
-                    //];
-
-                    //self.testcart = books.books;
+                  
 
                     self.totalPrice = ko.computed(function () {
                         var total = 0, i = 0, current;
@@ -130,17 +124,13 @@ define('controllers/checkoutController', {
             }).done(function (data) {
                 var books = new Books(JSON.parse(data));
 
-                //alert(String(books));
+               
                 var dataModel = function (data) {
 
                     var self = {};
 
 
-                    //self.testcart = [    // later changes to the live data
-                    //                   { thumbnailLink: '/images/books/beforeIGo.jpg', title: 'Sample Book', detailsLink: 'http://www.google.com', price: 4.99 },
-                    //                   { thumbnailLink: '/images/books/beforeIGo.jpg', title: 'Sample Book: The Sequel', detailsLink: 'http://www.yahoo.com', price: 5.99 },
-                    //                   { thumbnailLink: '/images/books/beforeIGo.jpg', title: 'Sample Book: The Exciting End of the Trilogy', detailsLink: 'http://www.bing.com', price: 6.99 }
-                    //];
+                   
 
                     self.testcart = books.books;
 

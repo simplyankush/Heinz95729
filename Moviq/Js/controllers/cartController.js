@@ -10,12 +10,9 @@
             }).done(function (data) {
                 var result = new Boolean(JSON.parse(data));
                 if (result == true) {
-                    //viewEngine.setView({
-                    //    template: 't-productdeleted',
-                    //    data: {}
-                    //});
+                   
                     window.location.href = "/#/checkout";
-                    //window.location.reload();
+                   
                 }
                 else {
                     alert("failed to delete product from cart");
@@ -45,10 +42,7 @@
                 var result = JSON.parse(data);
 
                 if (result == 1) {
-                    //viewEngine.setView({
-                    //    template: 't-productadded',
-                    //    data: {}
-                    //});
+                
                     alert("Product added to cart");
                 }
 
@@ -60,10 +54,7 @@
                     });
                 }
                 else {
-                    //viewEngine.setView({
-                    //    template: 't-productexists',
-                    //    data: {}
-                    //});
+                   
                     alert("Product exists in cart");
                 }
 
